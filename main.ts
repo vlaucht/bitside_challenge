@@ -59,20 +59,20 @@ let main;
 main = new Main(1);
 main.addItem("A0001").addItem("A0001").addItem("A0001");
 sum = main.applyDealOneFree("A0001").checkOut();
-console.log(`${sum} == ${(INVENTORY[0].price) * 2}`)
+console.assert(`${sum}` === `${(INVENTORY[0].price) * 2}`)
 
 // 2.  User can still check original values
 sum = main.checkTotal();
-console.log(`${sum} == ${(INVENTORY[0].price) * 3}`)
+console.assert(`${sum}` === `${(INVENTORY[0].price) * 3}`)
 
 // 3. appy discount to certain item
 main = new Main(2);
 main.addItem("A0001").addItem("A0002").addItem("A0003");
 sum = main.applyDealDiscount("a0002", 10).checkOut();
-console.log(`${sum} == ${(INVENTORY[0].price + (INVENTORY[1].price * 0.9) + INVENTORY[2].price).toFixed(2)}`);
+console.assert(`${sum}` === `${(INVENTORY[0].price + (INVENTORY[1].price * 0.9) + INVENTORY[2].price).toFixed(2)}`);
 
 // 4. offers can be chained
 main = new Main(3);
 main.addItem("A0001").addItem("A0002").addItem("A0002");
 sum = main.applyDealDiscount("a0001", 10).applyDealOneFree("A0002").checkOut();
-console.log(`${sum} == ${((INVENTORY[0].price * 0.9) + INVENTORY[1].price).toFixed(2)}`);
+console.assert(`${sum}` === `${((INVENTORY[0].price * 0.9) + INVENTORY[1].price).toFixed(2)}`)
